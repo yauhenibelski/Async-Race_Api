@@ -2,7 +2,6 @@
 Api for Rolling Scopes School task "Async Race".
 
 ## Setup and Running
-
 - Use `node 14.x` or higher.
 - Clone this repo: `$ git clone https://github.com/mikhama/async-race-api.git`.
 - Go to downloaded folder: `$ cd async-race-api`.
