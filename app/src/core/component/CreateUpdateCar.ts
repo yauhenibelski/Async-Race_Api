@@ -4,8 +4,8 @@ import Component from './template/component';
 class CreateUpdateCar extends Component {
   private value: string;
 
-  constructor(value: 'Create car' | 'Update car', className?: string) {
-    super('div', className);
+  constructor(value: 'Create car' | 'Update car') {
+    super('div', 'create-update-car');
     this.value = value;
   }
 

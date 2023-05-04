@@ -1,4 +1,4 @@
-import CreateUpdateCar from './component/CreateUpdateCar';
+import MainPageButtonsBlock from './component/MainPageButtonsBlock';
 import Navigation from './component/navigation';
 
 class App {
@@ -6,8 +6,7 @@ class App {
 
   run() {
     this.container.append(new Navigation('links').render());
-    this.container.append(new CreateUpdateCar('Create car', 'create-update-car').render());
-    this.container.append(new CreateUpdateCar('Update car', 'create-update-car').render());
+    this.container.append(new MainPageButtonsBlock().render());
   }
 }
 
