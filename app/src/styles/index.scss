@@ -1,3 +1,25 @@
 body {
   background-color: rgb(112, 111, 110);
 }
+.links {
+  a {
+    margin: 10px;
+    text-decoration: none;
+    color: aliceblue;
+  }
+}
+.create-update-car {
+  display: flex;
+  align-items: center;
+
+  input,
+  button {
+    height: 30px;
+    box-sizing: border-box;
+    margin-right: 2px;
+  }
+
+  button {
+    width: 60px;
+  }
+}
