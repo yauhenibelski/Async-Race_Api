@@ -1,6 +1,6 @@
 import { createColorCar } from '../utils/create_a_car_by_color';
-import Button from './template/button';
 import Component from './template/component';
+import SelectRemoveButtonsBlock from './SelectRemoveButtonsBlock';
 
 class CarBlock extends Component {
   private carColor: string;
@@ -15,23 +15,12 @@ class CarBlock extends Component {
   }
 
   private createCarBlock() {
-    const selectRemoveButtonsBlock = document.createElement('div');
-    selectRemoveButtonsBlock.className = 'select-remove-buttons';
-
-    selectRemoveButtonsBlock.append(
-      new Button('Select', () => console.log('select')).render(),
-    );
-    selectRemoveButtonsBlock.append(
-      new Button('Remove', () => console.log('remove')).render(),
-    );
-
-    selectRemoveButtonsBlock.append(
-      new Button('Start', () => console.log('start')).render(),
-    );
+    const selectRemoveButtonsBlock = new SelectRemoveButtonsBlock(
+      this.container.id,
+    ).render();
 
     const carName = document.createElement('p');
     carName.innerHTML = this.carName;
-
     selectRemoveButtonsBlock.append(carName);
 
     this.container.append(selectRemoveButtonsBlock);
