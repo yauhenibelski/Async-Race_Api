@@ -5,6 +5,7 @@ class Button extends Component {
     super('button', className);
     this.container.innerHTML = buttonName;
     this.container.onclick = callback;
+    this.container.id = buttonName.toLocaleLowerCase().split(' ').join('_');
   }
 
   render() {

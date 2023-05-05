@@ -1,12 +1,12 @@
-import MainPageButtonsBlock from './component/MainPageButtonsBlock';
-import Navigation from './component/navigation';
+import Navigation from './component/Navigation';
+import GaragePage from '../pages/Garage';
 
 class App {
   private container = document.body;
 
   run() {
     this.container.append(new Navigation('links').render());
-    this.container.append(new MainPageButtonsBlock().render());
+    this.container.append(new GaragePage().render());
   }
 }
 
