@@ -1,7 +1,5 @@
 import Component from './template/component';
-import { Car as CarType } from '../types/car';
-import { getCars } from '../api/getCars';
-import CarBlock from './CarBlock';
+import { createBlock } from '../utils/GaragePage/create_raceBlock';
 
 class RaceBlock extends Component {
   static container: HTMLElement;
@@ -11,35 +9,14 @@ class RaceBlock extends Component {
     RaceBlock.container = this.container;
   }
 
-  static async createBlock() {
-    const { response, totalCount } = await getCars();
-
-    if (totalCount ? !parseInt(totalCount, 10) : false) {
-      const h2 = document.createElement('h2');
-      h2.innerHTML = 'No cars in the garage';
-
-      this.container.append(h2);
-    } else {
-      response.then((cars) => {
-        cars.forEach((car: CarType) => {
-          this.container.append(
-            new CarBlock(car.id, car.name, car.color).render(),
-          );
-        });
-      });
-    }
-  }
+  static createBlock = createBlock;
 
   static async refreshComponent() {
-    const { totalCount } = await getCars();
-    if (totalCount ? !parseInt(totalCount, 10) : false) {
-      this.container.innerHTML = '';
-      RaceBlock.createBlock();
-    }
+    RaceBlock.createBlock(this.container);
   }
 
   render(): HTMLElement {
-    RaceBlock.createBlock();
+    RaceBlock.createBlock(this.container);
     return this.container;
   }
 }

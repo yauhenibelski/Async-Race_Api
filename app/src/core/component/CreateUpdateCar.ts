@@ -1,8 +1,14 @@
 import Button from './template/button';
 import Component from './template/component';
+import { createUpdateCar } from '../utils/GaragePage/create-update_car';
 
 class CreateUpdateCar extends Component {
-  private value: string;
+  private value: 'Create car' | 'Update car';
+
+  static textObject = {
+    color: '#000000',
+    name: '',
+  };
 
   constructor(value: 'Create car' | 'Update car') {
     const className = value === 'Create car'
@@ -12,12 +18,16 @@ class CreateUpdateCar extends Component {
     super('div', className);
 
     this.value = value;
-    this.container.id = value.toLocaleLowerCase().split(' ').join('_');
   }
 
   private renderInputText() {
     const inputText = document.createElement('input');
+    inputText.id = this.value.toLocaleLowerCase().split(' ').join('_');
     inputText.type = 'text';
+    inputText.onchange = (e) => {
+      const elem = e.target as HTMLInputElement;
+      CreateUpdateCar.textObject.name = elem.value;
+    };
     inputText.placeholder = `${this.value}`;
     this.container.append(inputText);
   }
@@ -27,14 +37,14 @@ class CreateUpdateCar extends Component {
     inputText.type = 'color';
     inputText.onchange = (e) => {
       const elem = e.target as HTMLInputElement;
-      console.log(elem.value);
+      CreateUpdateCar.textObject.color = elem.value;
     };
     this.container.append(inputText);
   }
 
   render(): HTMLElement {
     const [valueText] = this.value.split(' ');
-    const button = new Button(valueText, () => console.log(this.value));
+    const button = new Button(valueText, () => { createUpdateCar(this.value); });
     this.renderInputText();
     this.renderInputColor();
     this.container.append(button.render());
