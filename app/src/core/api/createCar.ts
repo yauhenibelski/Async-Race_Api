@@ -1,8 +1,7 @@
-import { Car } from '../types/car';
 import { baseUrl } from './base_url';
 
-export async function createCar({ name, color, id }: Car) {
-  const data = { name, color, id };
+export async function createCar(name: string, color: string) {
+  const data = { name, color };
   await fetch(`${baseUrl}garage`, {
     method: 'POST',
     headers: {

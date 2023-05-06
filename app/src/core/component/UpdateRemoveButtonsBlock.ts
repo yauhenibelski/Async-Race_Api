@@ -2,21 +2,22 @@ import { deleteCar } from '../api/deleteCar';
 import RaceBlock from './RaceBlock';
 import Button from './template/button';
 import Component from './template/component';
+import { focusUpdateInput } from '../utils/GaragePage/ focusUpdateInput';
 
-class SelectRemoveButtonsBlock extends Component {
-  constructor(carId: string) {
+class UpdateRemoveButtonsBlock extends Component {
+  constructor(carId: number) {
     super('div', 'select-remove-buttons');
-    this.container.id = carId;
+    this.container.id = `${carId}`;
   }
 
   private createBlock() {
     this.container.append(
-      new Button('Select', () => console.log('select')).render(),
+      new Button('Update Car', () => { focusUpdateInput(+this.container.id); }).render(),
     );
     this.container.append(
       new Button('Remove', async () => {
         await deleteCar(this.container.id);
-        await RaceBlock.recreateComponent();
+        RaceBlock.reCreateComponent();
       }).render(),
     );
 
@@ -30,4 +31,4 @@ class SelectRemoveButtonsBlock extends Component {
     return this.container;
   }
 }
-export default SelectRemoveButtonsBlock;
+export default UpdateRemoveButtonsBlock;

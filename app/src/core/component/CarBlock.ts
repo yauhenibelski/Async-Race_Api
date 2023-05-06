@@ -1,29 +1,30 @@
+import { Car } from '../types/car';
 import { createColorCar } from '../utils/create_a_car_by_color';
 import Component from './template/component';
-import SelectRemoveButtonsBlock from './SelectRemoveButtonsBlock';
+import UpdateRemoveButtonsBlock from './UpdateRemoveButtonsBlock';
 
 class CarBlock extends Component {
   private carColor: string;
 
   private carName: string;
 
-  constructor(id: number, carName: string, carColor: string) {
+  constructor({ name, color, id }: Car) {
     super('div', 'car-container');
     this.container.id = `${id}`;
-    this.carColor = carColor;
-    this.carName = carName;
+    this.carColor = color;
+    this.carName = name;
   }
 
   private createCarBlock() {
-    const selectRemoveButtonsBlock = new SelectRemoveButtonsBlock(
-      this.container.id,
+    const updateRemoveButtonsBlock = new UpdateRemoveButtonsBlock(
+      +this.container.id,
     ).render();
 
     const carName = document.createElement('p');
     carName.innerHTML = this.carName;
-    selectRemoveButtonsBlock.append(carName);
+    updateRemoveButtonsBlock.append(carName);
 
-    this.container.append(selectRemoveButtonsBlock);
+    this.container.append(updateRemoveButtonsBlock);
     this.container.append(createColorCar(this.carColor));
   }
 

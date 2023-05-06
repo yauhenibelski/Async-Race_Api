@@ -16,7 +16,7 @@ export async function createBlock(thisContainer: HTMLElement) {
     response.then((cars) => {
       cars.forEach((car: Car) => {
         container.append(
-          new CarBlock(car.id, car.name, car.color).render(),
+          new CarBlock(car).render(),
         );
       });
     });

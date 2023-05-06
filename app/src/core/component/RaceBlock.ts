@@ -11,7 +11,7 @@ class RaceBlock extends Component {
 
   static createBlock = createBlock;
 
-  static async recreateComponent() {
+  static async reCreateComponent() {
     RaceBlock.createBlock(this.container);
   }
 
