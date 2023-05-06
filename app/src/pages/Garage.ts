@@ -22,7 +22,7 @@ class GaragePage extends Component {
     this.container.append(new RaceBlock().render());
   }
 
-  static refreshComponent() {
+  static recreateComponent() {
     this.container.innerHTML = '';
     this.createPage();
   }

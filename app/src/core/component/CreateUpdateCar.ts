@@ -7,47 +7,33 @@ class CreateUpdateCar extends Component {
 
   static textObject = {
     color: '#000000',
-    name: '',
+    text: '',
   };
 
   constructor(value: 'Create car' | 'Update car') {
-    const className = value === 'Create car'
-      ? 'create-update-car'
-      : 'create-update-car update-car__inactive';
-
-    super('div', className);
-
+    super('div', 'create-update-car');
     this.value = value;
   }
 
-  private renderInputText() {
-    const inputText = document.createElement('input');
-    inputText.id = this.value.toLocaleLowerCase().split(' ').join('_');
-    inputText.type = 'text';
-    inputText.onchange = (e) => {
+  private renderInput(type: 'color' | 'text') {
+    const input = document.createElement('input');
+    input.type = type;
+    input.onchange = (e) => {
       const elem = e.target as HTMLInputElement;
-      CreateUpdateCar.textObject.name = elem.value;
+      CreateUpdateCar.textObject[type] = elem.value;
     };
-    inputText.placeholder = `${this.value}`;
-    this.container.append(inputText);
-  }
-
-  private renderInputColor() {
-    const inputText = document.createElement('input');
-    inputText.type = 'color';
-    inputText.onchange = (e) => {
-      const elem = e.target as HTMLInputElement;
-      CreateUpdateCar.textObject.color = elem.value;
-    };
-    this.container.append(inputText);
+    if (type === 'text') {
+      input.id = this.value.toLocaleLowerCase().split(' ').join('_');
+      input.placeholder = `${this.value}`;
+    }
+    this.container.append(input);
   }
 
   render(): HTMLElement {
-    const [valueText] = this.value.split(' ');
-    const button = new Button(valueText, () => { createUpdateCar(this.value); });
-    this.renderInputText();
-    this.renderInputColor();
-    this.container.append(button.render());
+    const [nameButton] = this.value.split(' ');
+    this.renderInput('text');
+    this.renderInput('color');
+    this.container.append(new Button(nameButton, () => { createUpdateCar(this.value); }).render());
     return this.container;
   }
 }

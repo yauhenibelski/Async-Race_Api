@@ -41,18 +41,6 @@ body {
   }
 }
 
-.update-car__inactive {
-  position: relative;
-
-  &:before {
-    content: '';
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    background-color: rgba(112, 111, 110, 0.605);
-  }
-}
-
 .car-container {
   position: relative;
   background-color: rgba(0, 0, 0, 0.25);

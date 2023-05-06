@@ -18,7 +18,6 @@ class MainPageButtonsBlock extends Component {
 
   render(): HTMLElement {
     this.container.append(new CreateUpdateCar('Create car').render());
-    this.container.append(new CreateUpdateCar('Update car').render());
     this.renderButtonsBlock();
     return this.container;
   }

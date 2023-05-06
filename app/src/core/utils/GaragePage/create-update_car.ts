@@ -4,26 +4,22 @@ import RaceBlock from '../../component/RaceBlock';
 import { Car } from '../../types/car';
 
 export async function createUpdateCar(value: 'Create car' | 'Update car') {
-  const capitalizeName = (
-    CreateUpdateCar.textObject.name[0].toLocaleUpperCase()
-    + CreateUpdateCar.textObject.name.slice(1)
+  if (CreateUpdateCar.textObject.text === '') {
+    throw new Error('Enter the name of the car!!!');
+  }
+  const capitalizeCarName = (
+    CreateUpdateCar.textObject.text[0].toLocaleUpperCase()
+      + CreateUpdateCar.textObject.text.slice(1)
   );
+
   const newCar: Car = {
-    name: capitalizeName,
+    name: capitalizeCarName,
     color: CreateUpdateCar.textObject.color,
     id: Date.now(),
   };
 
   if (value === 'Create car') {
-    if (newCar.name === '') {
-      throw new Error('Enter the name of the car!!!');
-    }
-
     await createCar(newCar);
-    await RaceBlock.refreshComponent();
-
-    const inputText = document.getElementById('create_car') as HTMLInputElement;
-    inputText.value = '';
-    CreateUpdateCar.textObject.name = '';
+    await RaceBlock.recreateComponent();
   }
 }
