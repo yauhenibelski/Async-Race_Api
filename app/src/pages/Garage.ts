@@ -16,10 +16,10 @@ class GaragePage extends Component {
     GaragePage.container = this.container;
   }
 
-  static createPage() {
+  static async createPage() {
     this.container.append(createHeder());
     this.container.append(new MainPageButtonsBlock().render());
-    this.container.append(new RaceBlock().render());
+    this.container.append(await new RaceBlock().render());
   }
 
   static recreateComponent() {

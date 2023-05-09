@@ -6,7 +6,7 @@ abstract class Component {
     if (className) this.container.className = className;
   }
 
-  render() {
+  render(): Promise<HTMLElement> | HTMLElement {
     return this.container;
   }
 }
