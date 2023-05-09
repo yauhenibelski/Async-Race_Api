@@ -3,3 +3,5 @@ export type Car = {
   color: string,
   id: number,
 }
+
+export type NewCar = Omit<Car, 'id'>

@@ -4,19 +4,16 @@ import { createBlock } from '../utils/GaragePage/create_raceBlock';
 class RaceBlock extends Component {
   static container: HTMLElement;
 
+  static render: () => HTMLElement;
+
   constructor() {
     super('div', 'race-block');
     RaceBlock.container = this.container;
+    RaceBlock.render = this.render;
   }
 
-  static createBlock = createBlock;
-
-  static async reCreateComponent() {
-    RaceBlock.createBlock(this.container);
-  }
-
-  render(): HTMLElement {
-    RaceBlock.createBlock(this.container);
+  render() {
+    createBlock(this.container);
     return this.container;
   }
 }

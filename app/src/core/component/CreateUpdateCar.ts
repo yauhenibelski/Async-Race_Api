@@ -8,6 +8,8 @@ class CreateUpdateCar extends Component {
 
   static container: HTMLElement;
 
+  static render: () => HTMLElement;
+
   static textObject = {
     color: '#7A7A7A',
     text: '',
@@ -18,14 +20,11 @@ class CreateUpdateCar extends Component {
     super('div', 'create-update-car');
     CreateUpdateCar.value = value;
     CreateUpdateCar.container = this.container;
-  }
-
-  static reCreateComponent() {
-    this.container.innerHTML = '';
-    this.createComponent();
+    CreateUpdateCar.render = this.render;
   }
 
   static createComponent() {
+    this.container.innerHTML = '';
     const [nameButton] = CreateUpdateCar.value.split(' ');
     this.container.append(createTextOrColorInput('text'));
     this.container.append(createTextOrColorInput('color'));

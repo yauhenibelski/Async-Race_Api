@@ -1,6 +1,6 @@
 import { getCars } from '../../api/getCars';
 import CarBlock from '../../component/CarBlock';
-import { Car } from '../../types/car';
+import { Car } from '../../types/types';
 
 export async function createBlock(thisContainer: HTMLElement) {
   const container = thisContainer;
@@ -13,7 +13,7 @@ export async function createBlock(thisContainer: HTMLElement) {
     container.append(h2);
   } else {
     container.innerHTML = '';
-    response.then((cars) => {
+    await response.then((cars) => {
       cars.forEach((car: Car) => {
         container.append(
           new CarBlock(car).render(),

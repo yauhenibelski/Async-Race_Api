@@ -17,7 +17,7 @@ class UpdateRemoveButtonsBlock extends Component {
     this.container.append(
       new Button('Remove', async () => {
         await deleteCar(this.container.id);
-        RaceBlock.reCreateComponent();
+        RaceBlock.render();
       }).render(),
     );
 

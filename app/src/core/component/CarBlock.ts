@@ -1,4 +1,4 @@
-import { Car } from '../types/car';
+import { Car } from '../types/types';
 import { createColorCar } from '../utils/create_a_car_by_color';
 import Component from './template/component';
 import UpdateRemoveButtonsBlock from './UpdateRemoveButtonsBlock';

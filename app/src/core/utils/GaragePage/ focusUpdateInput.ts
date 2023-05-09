@@ -1,13 +1,13 @@
 import { getCar } from '../../api/getCar';
-import { Car } from '../../types/car';
+import { Car } from '../../types/types';
 import CreateUpdateCar from '../../component/CreateUpdateCar';
 
-export function focusUpdateInput(carId?: number) {
+export async function focusUpdateInput(carId?: number) {
   CreateUpdateCar.value = CreateUpdateCar.value === 'Update car'
     ? 'Create car'
     : 'Update car';
 
-  CreateUpdateCar.reCreateComponent();
+  CreateUpdateCar.render();
 
   if (CreateUpdateCar.value === 'Update car' && carId) {
     const updateInput = document.getElementById('update_car_text') as HTMLInputElement;
@@ -15,7 +15,7 @@ export function focusUpdateInput(carId?: number) {
 
     updateInput.focus();
 
-    getCar(carId).then((car: Car) => {
+    await getCar(carId).then((car: Car) => {
       updateInputColor.value = car.color;
       updateInput.value = car.name;
 
@@ -30,12 +30,11 @@ export function focusUpdateInput(carId?: number) {
         if (!elem.closest('.create-update-car')) {
           CreateUpdateCar.value = 'Create car';
           CreateUpdateCar.textObject.text = '';
-          CreateUpdateCar.reCreateComponent();
+          CreateUpdateCar.render();
 
           document.onclick = null;
         }
       };
-    }, 50);
+    });
   }
-  CreateUpdateCar.textObject.text = '';
 }

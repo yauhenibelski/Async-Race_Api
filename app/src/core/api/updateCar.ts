@@ -1,4 +1,4 @@
-import { Car } from '../types/car';
+import { Car } from '../types/types';
 import { baseUrl } from './base_url';
 
 export async function updateCar({ name, color, id }: Car) {
