@@ -2,7 +2,7 @@ import Component from './template/component';
 import { createBlock } from '../utils/GaragePage/create_raceBlock';
 
 class RaceBlock extends Component {
-  static container: HTMLElement;
+  private static container: HTMLElement;
 
   static render: () => Promise<HTMLElement>;
 

@@ -4,26 +4,25 @@ import RaceBlock from '../core/component/RaceBlock';
 import Header from '../core/component/Header';
 
 class GaragePage extends Component {
-  static container: HTMLElement;
+  private static container: HTMLElement;
+
+  static render: () => HTMLElement;
 
   constructor() {
     super('div', 'garage-page');
     GaragePage.container = this.container;
+    GaragePage.render = this.render;
   }
 
-  static async createPage() {
+  private async createPage() {
+    this.container.innerHTML = '';
     this.container.append(new Header().render());
     this.container.append(new MainPageButtonsBlock().render());
     this.container.append(await new RaceBlock().render());
   }
 
-  static recreateComponent() {
-    this.container.innerHTML = '';
-    this.createPage();
-  }
-
   render(): HTMLElement {
-    GaragePage.createPage();
+    this.createPage();
     return this.container;
   }
 }

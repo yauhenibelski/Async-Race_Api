@@ -2,7 +2,7 @@ import Component from './template/component';
 import { createHeader } from '../utils/GaragePage/create_header';
 
 class Header extends Component {
-  static container: HTMLElement;
+  private static container: HTMLElement;
 
   static textObject = {
     containName: 'Garage',

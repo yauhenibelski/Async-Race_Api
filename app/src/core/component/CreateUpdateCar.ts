@@ -6,7 +6,7 @@ import { createTextOrColorInput } from '../utils/GaragePage/create_Text_Or_Color
 class CreateUpdateCar extends Component {
   static value: 'Create car' | 'Update car';
 
-  static container: HTMLElement;
+  private static container: HTMLElement;
 
   static render: () => HTMLElement;
 
@@ -23,7 +23,7 @@ class CreateUpdateCar extends Component {
     CreateUpdateCar.render = this.render;
   }
 
-  static createComponent() {
+  private static createComponent() {
     this.container.innerHTML = '';
     const [nameButton] = CreateUpdateCar.value.split(' ');
     this.container.append(createTextOrColorInput('text'));

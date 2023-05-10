@@ -1,4 +1,4 @@
-import Navigation from './component/Navigation';
+import Navigation from './component/navigation';
 import GaragePage from '../pages/Garage';
 
 class App {

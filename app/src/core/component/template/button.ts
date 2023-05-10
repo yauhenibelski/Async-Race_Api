@@ -1,7 +1,7 @@
 import Component from './component';
 
 class Button extends Component {
-  constructor(buttonName: string, callback: () => void, className?: string) {
+  constructor(buttonName: string, callback: (e?: MouseEvent) => void, className?: string) {
     super('button', className);
     this.container.innerHTML = buttonName;
     this.container.onclick = callback;

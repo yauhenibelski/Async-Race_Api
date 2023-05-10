@@ -1,5 +1,5 @@
 import { Car } from '../types/types';
-import { baseUrl } from './base_url';
+import { baseUrl } from '../constants/base_url';
 
 export async function updateCar({ name, color, id }: Car) {
   const data = { name, color, id };
