@@ -1,16 +1,14 @@
-import GaragePage from '../../../pages/Garage';
+import Header from '../../component/Header';
 
-export function createHeder() {
-  const div = document.createElement('header');
+export function createHeader(thisContainer: HTMLElement) {
+  const container = thisContainer;
   const h2 = document.createElement('h2');
   const h3 = document.createElement('h3');
 
-  div.className = 'header';
-  h2.innerHTML = GaragePage.textObject.containName;
-  h3.innerHTML = GaragePage.textObject.currentPage;
+  h2.innerHTML = `${Header.textObject.containName} (${Header.textObject.totalCountCars})`;
+  h3.innerHTML = `${Header.textObject.pageText} #${Header.textObject.pageNum}`;
 
-  div.append(h2);
-  div.append(h3);
-
-  return div;
+  container.innerHTML = '';
+  container.append(h2);
+  container.append(h3);
 }

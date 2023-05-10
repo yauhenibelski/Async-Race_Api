@@ -1,10 +1,14 @@
 import { getCars } from '../../api/getCars';
 import CarBlock from '../../component/CarBlock';
+import Header from '../../component/Header';
 import { Car } from '../../types/types';
 
 export async function createBlock(thisContainer: HTMLElement) {
   const container = thisContainer;
-  const { response, totalCount } = await getCars();
+  const { response, totalCount } = await getCars(Header.textObject.pageNum);
+
+  Header.textObject.totalCountCars = totalCount ? +totalCount : 0;
+  Header.render();
 
   if (totalCount ? !parseInt(totalCount, 10) : false) {
     const h2 = document.createElement('h2');
