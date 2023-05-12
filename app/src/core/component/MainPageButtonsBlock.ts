@@ -2,6 +2,7 @@ import CreateUpdateCar from './CreateUpdateCar';
 import Button from './template/button';
 import Component from './template/component';
 import { generateRandomCars } from '../utils/GaragePage/generateRandomCars';
+import { startRace } from '../utils/GaragePage/startRace';
 
 class MainPageButtonsBlock extends Component {
   constructor() {
@@ -11,8 +12,7 @@ class MainPageButtonsBlock extends Component {
   renderButtonsBlock() {
     const div = document.createElement('div');
     div.className = 'buttons-block';
-    div.append(new Button('Race', () => console.log('race')).render());
-    div.append(new Button('Reset', () => console.log('reset')).render());
+    div.append(new Button('Race', startRace).render());
     div.append(new Button('Generate Cars', () => { generateRandomCars(100); }).render());
     this.container.append(div);
   }

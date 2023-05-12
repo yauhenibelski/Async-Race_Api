@@ -15,8 +15,8 @@ class Pagination extends Component {
 
   private changeCage(e?: MouseEvent): void {
     const elem = e?.currentTarget as HTMLButtonElement;
-
-    Header.textObject.pageNum = +elem.id;
+    const elemNum = elem.dataset.about ? +elem.dataset.about : 0;
+    Header.textObject.pageNum = elemNum;
     RaceBlock.render();
   }
 

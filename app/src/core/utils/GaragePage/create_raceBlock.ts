@@ -4,6 +4,7 @@ import Header from '../../component/Header';
 import { Car } from '../../types/types';
 import { pageLimit } from '../../constants/pageLimit';
 import Pagination from '../../component/Pagination';
+import RaceBlock from '../../component/RaceBlock';
 
 export async function createBlock(thisContainer: HTMLElement) {
   const container = thisContainer;
@@ -20,11 +21,8 @@ export async function createBlock(thisContainer: HTMLElement) {
   } else {
     container.innerHTML = '';
     await response.then((cars) => {
-      cars.forEach((car: Car) => {
-        container.append(
-          new CarBlock(car).render(),
-        );
-      });
+      RaceBlock.currentCars = [];
+      cars.forEach((car: Car) => { container.append(new CarBlock(car).render()); });
     });
   }
   if (totalCount > pageLimit) {

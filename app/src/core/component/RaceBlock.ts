@@ -4,6 +4,8 @@ import { createBlock } from '../utils/GaragePage/create_raceBlock';
 class RaceBlock extends Component {
   private static container: HTMLElement;
 
+  static currentCars: (HTMLElement | number)[][] = [];
+
   static render: () => Promise<HTMLElement>;
 
   constructor() {
