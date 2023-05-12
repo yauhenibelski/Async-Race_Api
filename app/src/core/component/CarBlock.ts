@@ -4,20 +4,21 @@ import Component from './template/component';
 import UpdateRemoveButtonsBlock from './UpdateRemoveButtonsBlock';
 
 class CarBlock extends Component {
-  private carColor: string;
-
   private carName: string;
+
+  private carHTML: HTMLElement;
 
   constructor({ name, color, id }: Car) {
     super('div', 'car-container');
     this.container.id = `${id}`;
-    this.carColor = color;
     this.carName = name;
+    this.carHTML = createColorCar(color);
   }
 
   private createCarBlock() {
     const updateRemoveButtonsBlock = new UpdateRemoveButtonsBlock(
       +this.container.id,
+      this.carHTML,
     ).render();
 
     const carName = document.createElement('p');
@@ -25,7 +26,7 @@ class CarBlock extends Component {
     updateRemoveButtonsBlock.append(carName);
 
     this.container.append(updateRemoveButtonsBlock);
-    this.container.append(createColorCar(this.carColor));
+    this.container.append(this.carHTML);
   }
 
   render(): HTMLElement {
