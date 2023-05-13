@@ -6,7 +6,7 @@ import Header from '../core/component/Header';
 class GaragePage extends Component {
   private static container: HTMLElement;
 
-  static render: () => HTMLElement;
+  static render: () => Promise<HTMLElement>;
 
   constructor() {
     super('div', 'garage-page');
@@ -21,8 +21,8 @@ class GaragePage extends Component {
     this.container.append(await new RaceBlock().render());
   }
 
-  render(): HTMLElement {
-    this.createPage();
+  async render(): Promise<HTMLElement> {
+    await this.createPage();
     return this.container;
   }
 }
