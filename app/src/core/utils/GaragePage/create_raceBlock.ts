@@ -10,6 +10,8 @@ export async function createBlock(thisContainer: HTMLElement) {
   const container = thisContainer;
   const { response, totalCount } = await getCars(Header.textObject.pageNum, pageLimit);
 
+  container.innerHTML = '';
+
   Header.textObject.totalCountCars = totalCount;
   Header.render();
 
@@ -19,7 +21,6 @@ export async function createBlock(thisContainer: HTMLElement) {
 
     container.append(h2);
   } else {
-    container.innerHTML = '';
     await response.then((cars) => {
       RaceBlock.currentCars = [];
       cars.forEach((car: Car) => { container.append(new CarBlock(car).render()); });

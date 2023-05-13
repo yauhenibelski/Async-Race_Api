@@ -1,6 +1,6 @@
 import { baseUrl } from '../constants/base_url';
 
-export async function startStopEngine(carId: number) {
+export async function startEngineGetTime(carId: number) {
   let time = 0;
   await fetch(`${baseUrl}engine?id=${carId}&status=started`, { method: 'PATCH' })
     .then((response) => response.json())

@@ -1,40 +1,35 @@
-import { startStopEngine } from '../../api/engineStartStop';
+import { startEngineGetTime } from '../../api/engineStartStop';
+import { setStatusCar } from '../../api/setStatusCar';
 
-export async function startResetCar(
-  car: HTMLElement,
-  id: number,
-  currentButton: HTMLButtonElement,
-) {
+export async function startResetCar(car: HTMLElement, id: number, currentButton: HTMLElement) {
   const carHTML = car;
   const button = currentButton;
   const buttonText = button.innerHTML;
-  const carId = id;
 
   if (buttonText === 'Start') {
+    setStatusCar.callStack.add(id);
+
     button.innerHTML = 'Reset';
-    const time = await startStopEngine(carId);
-    const windWidth = window.innerWidth;
+
+    const time = await startEngineGetTime(id);
+    const windowWidth = window.innerWidth;
     const carWidth = carHTML.offsetWidth;
 
     carHTML.style.transitionTimingFunction = 'ease-in-out';
-    carHTML.style.left = `${windWidth - carWidth - 20}px`;
+    carHTML.style.left = `${windowWidth - carWidth - 30}px`;
     carHTML.style.transitionDuration = `${time}ms`;
 
-    carHTML.ontransitionend = () => {
-      console.log(carId, 'finish');
-      carHTML.ontransitionend = null;
-    };
-
-    await fetch(`http://localhost:3000/engine?id=${carId}&status=drive`, { method: 'PATCH' })
-      .then((r) => {
-        if (r.status === 500) {
+    await setStatusCar(id)
+      .then((response) => {
+        if (response.status === 500) {
           const carPositionLeft = carHTML.offsetLeft;
           carHTML.style.cssText = `left: ${carPositionLeft}px`;
+          carHTML.style.transform = 'rotate(163deg) translateX(-50px)';
         }
+        setStatusCar.callStack.delete(id);
       });
   } else {
     button.innerHTML = 'Start';
     carHTML.style.cssText = 'left: 0px';
-    carHTML.ontransitionend = null;
   }
 }

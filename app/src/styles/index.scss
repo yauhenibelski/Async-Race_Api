@@ -1,6 +1,7 @@
 body {
-  background-color: rgb(112, 111, 110);
+  background-color:  rgb(67 76 113);
 }
+
 .links {
   a {
     margin: 10px;
@@ -53,9 +54,9 @@ body {
   &::before {
     content: "";
     position: absolute;
-    right: 15px;
+    right: 0px;
     height: 100%;
-    width: 77px;
+    width: 24px;
     background-size: cover;
     background-image: url(/assets/img/F1_chequered_flag.svg);
   }
@@ -99,5 +100,10 @@ body {
   }
   .current-page {
     background-color:  rgb(243, 243, 243);
+  }
+}
+button {
+  &:disabled {
+    background-color: rgb(199, 199, 199);
   }
 }
