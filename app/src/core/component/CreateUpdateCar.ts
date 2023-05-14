@@ -25,11 +25,12 @@ class CreateUpdateCar extends Component {
 
   private static createComponent() {
     this.container.innerHTML = '';
-    const [nameButton] = CreateUpdateCar.value.split(' ');
+    const [nameButton] = this.value.split(' ');
+
     this.container.append(createTextOrColorInput('text'));
     this.container.append(createTextOrColorInput('color'));
     this.container.append(new Button(nameButton, () => {
-      createUpdateCar(CreateUpdateCar.value);
+      createUpdateCar(this.value);
     }).render());
   }
 

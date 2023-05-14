@@ -9,7 +9,7 @@ class MainPageButtonsBlock extends Component {
     super('div', 'buttons-container');
   }
 
-  renderButtonsBlock() {
+  private renderButtonsBlock() {
     const div = document.createElement('div');
     div.className = 'buttons-block';
     div.append(new Button('Race', startRace).render());

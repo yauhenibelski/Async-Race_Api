@@ -121,3 +121,15 @@ button {
   z-index: 2;
   color: aliceblue;
 }
+
+.car__finish-list {
+  display: flex;
+  align-items: center;
+  background-color: rgb(34 36 48 / 70%);
+  padding: 0px 30px;
+
+  .car {
+    width: 80px;
+    margin: 0px 10px;
+  }
+}

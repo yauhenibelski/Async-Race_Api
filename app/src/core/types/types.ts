@@ -5,3 +5,5 @@ export type Car = {
 }
 
 export type NewCar = Omit<Car, 'id'>
+
+export type CurrentCar = Car & {HTML: HTMLElement}

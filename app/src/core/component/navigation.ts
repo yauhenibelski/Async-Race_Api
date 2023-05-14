@@ -7,7 +7,7 @@ class Navigation extends Component {
   }
 
   render(): HTMLElement {
-    this.container.append(new Link('Garage', '/garage').render());
+    this.container.append(new Link('Garage', '/').render());
     this.container.append(new Link('Winners', '/winners').render());
 
     return this.container;
