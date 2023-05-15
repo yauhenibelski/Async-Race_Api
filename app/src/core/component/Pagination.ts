@@ -1,4 +1,3 @@
-/* eslint-disable class-methods-use-this */
 import Component from './template/component';
 import { pageLimit } from '../constants/pageLimit';
 import Button from './template/button';
@@ -16,13 +15,13 @@ class Pagination extends Component {
   private changeCage(e?: MouseEvent): void {
     const elem = e?.currentTarget as HTMLButtonElement;
     const elemNum = elem.dataset.about ? +elem.dataset.about : 0;
-    Header.textObject.pageNum = elemNum;
+    Header.textObject.garagePageNum = elemNum;
     RaceBlock.render();
   }
 
   private createPaginationBlock() {
     for (let i = 1; i <= Math.ceil(this.count / pageLimit); i += 1) {
-      const buttonClass = Header.textObject.pageNum === i ? 'current-page' : '';
+      const buttonClass = Header.textObject.garagePageNum === i ? 'current-page' : '';
       this.container.append(new Button(`${i}`, this.changeCage, buttonClass).render());
     }
   }

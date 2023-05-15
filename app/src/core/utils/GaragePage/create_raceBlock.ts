@@ -8,7 +8,7 @@ import RaceBlock from '../../component/RaceBlock';
 
 export async function createBlock(thisContainer: HTMLElement) {
   const container = thisContainer;
-  const { response, totalCount } = await getCars(Header.textObject.pageNum, pageLimit);
+  const { response, totalCount } = await getCars(Header.textObject.garagePageNum, pageLimit);
 
   container.innerHTML = '';
 

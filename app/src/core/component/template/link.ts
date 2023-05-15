@@ -4,7 +4,7 @@ class Link extends Component {
   constructor(linkName: string, href: string, className?: string) {
     super('a', className);
     this.container.innerHTML = linkName;
-    this.container.setAttribute('href', href);
+    this.container.setAttribute('href', `#${href}`);
   }
 
   render() {

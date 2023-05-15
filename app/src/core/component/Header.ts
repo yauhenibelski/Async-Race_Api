@@ -5,10 +5,11 @@ class Header extends Component {
   private static container: HTMLElement;
 
   static textObject = {
-    containName: 'Garage',
+    containName: '',
     pageText: 'Page',
-    pageNum: 1,
     totalCountCars: 0,
+    garagePageNum: 1,
+    winnersPageNum: 1,
   };
 
   static render: () => HTMLElement | Promise<HTMLElement>;

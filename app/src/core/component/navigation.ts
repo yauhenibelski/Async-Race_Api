@@ -1,5 +1,6 @@
 import Component from './template/component';
 import Link from './template/link';
+import { PageId } from '../constants/PageId';
 
 class Navigation extends Component {
   constructor(className?: string) {
@@ -7,8 +8,8 @@ class Navigation extends Component {
   }
 
   render(): HTMLElement {
-    this.container.append(new Link('Garage', '/').render());
-    this.container.append(new Link('Winners', '/winners').render());
+    this.container.append(new Link('Garage', PageId.Garage).render());
+    this.container.append(new Link('Winners', PageId.Winners).render());
 
     return this.container;
   }
