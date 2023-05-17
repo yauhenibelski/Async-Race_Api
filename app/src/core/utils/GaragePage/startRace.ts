@@ -4,6 +4,9 @@ import { startResetCar } from './startResetCar';
 import { setStatusCar } from '../../api/setStatusCar';
 import PopUp from '../../component/PopUp';
 import CarFinishList from '../../component/CarFinishList';
+import { createWinner } from '../../api/createWinner';
+import { getWinner } from '../../api/getWinner';
+import { updateWinner } from '../../api/updateWinner';
 
 export async function startRace(e?: MouseEvent) {
   const raceButton = e?.currentTarget as HTMLButtonElement;
@@ -25,9 +28,23 @@ export async function startRace(e?: MouseEvent) {
   if (raceButtonName === 'Reset') {
     allButtons.forEach((button) => { button.disabled = true; });
 
-    setStatusCar.callStack.waitingForRequestsToFinish(() => {
+    setStatusCar.callStack.waitingForRequestsToFinish(async () => {
       raceButton.disabled = false;
-      console.log(CarFinishList.finishCars[0]);
+      if (CarFinishList.finishCars.length) {
+        const [winnerId, winnerTime] = CarFinishList.finishCars[0];
+
+        await getWinner(winnerId).then((car) => {
+          if (car) {
+            const updateCar = {
+              wins: car.wins + 1,
+              time: car.time > winnerTime ? winnerTime : car.time,
+            };
+            updateWinner(winnerId, updateCar);
+          } else {
+            createWinner(winnerId, winnerTime);
+          }
+        });
+      }
       PopUp.ran(new CarFinishList().render());
     });
   } else {

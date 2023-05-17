@@ -32,7 +32,7 @@ class CarFinishList extends Component {
 
         num.innerHTML = `${i + 1}.`;
         carNameText.innerHTML = `${car.name}`;
-        timeText.innerHTML = ` ${time / 1000} s`;
+        timeText.innerHTML = ` ${time} s`;
 
         div.append(num);
         div.append(carHTML);
