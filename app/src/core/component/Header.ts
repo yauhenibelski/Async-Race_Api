@@ -8,6 +8,7 @@ class Header extends Component {
     containName: '',
     pageText: 'Page',
     totalCountCars: 0,
+    totalWinners: 99,
     garagePageNum: 1,
     winnersPageNum: 1,
   };

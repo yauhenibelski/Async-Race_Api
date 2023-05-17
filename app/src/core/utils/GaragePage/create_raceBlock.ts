@@ -2,17 +2,16 @@ import { getCars } from '../../api/getCars';
 import CarBlock from '../../component/CarBlock';
 import Header from '../../component/Header';
 import { Car } from '../../types/types';
-import { pageLimit } from '../../constants/pageLimit';
+import { pageLimitGarage } from '../../constants/pageLimit';
 import Pagination from '../../component/Pagination';
 import RaceBlock from '../../component/RaceBlock';
 
 export async function createBlock(thisContainer: HTMLElement) {
   const container = thisContainer;
-  const { response, totalCount } = await getCars(Header.textObject.garagePageNum, pageLimit);
+  const { response, totalCount } = await getCars(pageLimitGarage, Header.textObject.garagePageNum);
 
   container.innerHTML = '';
 
-  Header.textObject.totalCountCars = totalCount;
   Header.render();
 
   if (!totalCount) {
@@ -26,7 +25,7 @@ export async function createBlock(thisContainer: HTMLElement) {
       cars.forEach((car: Car) => { container.append(new CarBlock(car).render()); });
     });
   }
-  if (totalCount > pageLimit) {
+  if (totalCount > pageLimitGarage) {
     container.append(new Pagination(totalCount).render());
   }
 }

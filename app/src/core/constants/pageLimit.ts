@@ -1,1 +1,2 @@
-export const pageLimit = 7;
+export const pageLimitGarage = 7;
+export const pageLimitWinners = 10;

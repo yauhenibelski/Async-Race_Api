@@ -1,5 +1,5 @@
 import Component from './template/component';
-import { pageLimit } from '../constants/pageLimit';
+import { pageLimitGarage } from '../constants/pageLimit';
 import Button from './template/button';
 import Header from './Header';
 import RaceBlock from './RaceBlock';
@@ -20,7 +20,7 @@ class Pagination extends Component {
   }
 
   private createPaginationBlock() {
-    for (let i = 1; i <= Math.ceil(this.count / pageLimit); i += 1) {
+    for (let i = 1; i <= Math.ceil(this.count / pageLimitGarage); i += 1) {
       const buttonClass = Header.textObject.garagePageNum === i ? 'current-page' : '';
       this.container.append(new Button(`${i}`, this.changeCage, buttonClass).render());
     }
