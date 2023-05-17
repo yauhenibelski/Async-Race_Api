@@ -25,12 +25,10 @@ export async function startRace(e?: MouseEvent) {
   if (raceButtonName === 'Reset') {
     allButtons.forEach((button) => { button.disabled = true; });
 
-    const interval = setInterval(() => {
-      if (!setStatusCar.callStack.getStackLength()) {
-        raceButton.disabled = false;
-        clearInterval(interval);
-        PopUp.ran(new CarFinishList().render());
-      }
+    setStatusCar.callStack.waitingForRequestsToFinish(() => {
+      raceButton.disabled = false;
+      console.log(CarFinishList.finishCars[0]);
+      PopUp.ran(new CarFinishList().render());
     });
   } else {
     allButtons.forEach((button) => { button.disabled = false; });

@@ -28,7 +28,7 @@ export async function startResetCar(car: HTMLElement, id: number, currentButton:
           carHTML.style.transform = 'rotate(163deg) translateX(-50px)';
         }
         if (response.status === 200) {
-          CarFinishList.finishCars.push(id);
+          CarFinishList.finishCars.push([id, time]);
         }
         setStatusCar.callStack.delete(id);
       });

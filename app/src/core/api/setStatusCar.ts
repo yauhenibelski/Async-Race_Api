@@ -6,9 +6,16 @@ export function setStatusCar(carId: number) {
 
 setStatusCar.callStack = {
   stack: [] as number[],
-  getStackLength: () => setStatusCar.callStack.stack.length,
   add: (id: number) => setStatusCar.callStack.stack.push(id),
   delete: (id: number) => {
     setStatusCar.callStack.stack = setStatusCar.callStack.stack.filter((carId) => carId !== id);
+  },
+  waitingForRequestsToFinish: (fn: () => void) => {
+    const interval = setInterval(() => {
+      if (!setStatusCar.callStack.stack.length) {
+        clearInterval(interval);
+        fn();
+      }
+    });
   },
 };

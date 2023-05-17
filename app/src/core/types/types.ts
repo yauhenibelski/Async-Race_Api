@@ -7,3 +7,11 @@ export type Car = {
 export type NewCar = Omit<Car, 'id'>
 
 export type CurrentCar = Car & {HTML: HTMLElement}
+
+export type WinnersTableRowCar = [
+  number: number,
+  carHtml: HTMLElement,
+  name: string,
+  wins: number,
+  bestTime: number
+];

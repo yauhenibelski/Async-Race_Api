@@ -3,7 +3,7 @@ import RaceBlock from './RaceBlock';
 import Component from './template/component';
 
 class CarFinishList extends Component {
-  static finishCars: number[] = [];
+  static finishCars: [number, number][] = [];
 
   constructor() {
     super('div', 'finish-list');
@@ -19,10 +19,12 @@ class CarFinishList extends Component {
 
       this.container.append(noWinnerText);
     } else {
-      listFinishCarId.forEach((carId, i) => {
+      listFinishCarId.forEach((finishCar, i) => {
+        const [carId, time] = finishCar;
         const div = document.createElement('div');
         const num = document.createElement('h2');
         const carNameText = document.createElement('h2');
+        const timeText = document.createElement('h2');
         const car = RaceBlock.getCar(carId);
         const carHTML = createColorCar(car.color);
 
@@ -30,10 +32,12 @@ class CarFinishList extends Component {
 
         num.innerHTML = `${i + 1}.`;
         carNameText.innerHTML = `${car.name}`;
+        timeText.innerHTML = ` ${time / 1000} s`;
 
         div.append(num);
         div.append(carHTML);
         div.append(carNameText);
+        div.append(timeText);
 
         this.container.append(div);
       });
