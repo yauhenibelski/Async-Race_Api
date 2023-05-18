@@ -7,6 +7,8 @@ import CarFinishList from '../../component/CarFinishList';
 import { createWinner } from '../../api/createWinner';
 import { getWinner } from '../../api/getWinner';
 import { updateWinner } from '../../api/updateWinner';
+import Winners from '../../../pages/Winners';
+import Header from '../../component/Header';
 
 export async function startRace(e?: MouseEvent) {
   const raceButton = e?.currentTarget as HTMLButtonElement;
@@ -46,6 +48,8 @@ export async function startRace(e?: MouseEvent) {
         });
       }
       PopUp.ran(new CarFinishList().render());
+      Winners.render();
+      Header.render();
     });
   } else {
     allButtons.forEach((button) => { button.disabled = false; });

@@ -3,7 +3,7 @@ import RaceBlock from '../../component/RaceBlock';
 import { NewCar } from '../../types/types';
 import { getRandomCarBrand } from './ getRandomCarBrand';
 
-export async function generateRandomCars(count: number) {
+export function generateRandomCars(count: number) {
   const newCars: NewCar[] = [];
   for (let i = 0; i < count; i += 1) {
     const randomCar: NewCar = {
@@ -12,6 +12,6 @@ export async function generateRandomCars(count: number) {
     };
     newCars.push(randomCar);
   }
-  await createCar(newCars);
+  createCar(newCars);
   RaceBlock.render();
 }

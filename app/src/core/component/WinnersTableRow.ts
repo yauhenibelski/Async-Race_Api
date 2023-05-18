@@ -10,7 +10,7 @@ class WinnersTableRow extends Component {
   }
 
   render() {
-    this.car.forEach((val) => {
+    Object.values(this.car).forEach((val) => {
       const td = document.createElement('td');
       if (val instanceof HTMLElement) {
         td.append(val);

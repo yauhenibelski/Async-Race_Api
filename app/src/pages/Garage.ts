@@ -5,7 +5,7 @@ import RaceBlock from '../core/component/RaceBlock';
 class GaragePage extends Component {
   private static container: HTMLElement;
 
-  static render: () => HTMLElement;
+  static render: () => Promise<HTMLElement>;
 
   constructor(pageId: string) {
     super('div', 'garage-page');
@@ -20,8 +20,8 @@ class GaragePage extends Component {
     this.container.append(await new RaceBlock().render());
   }
 
-  render() {
-    this.createPage();
+  async render() {
+    await this.createPage();
     return this.container;
   }
 }

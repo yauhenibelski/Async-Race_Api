@@ -8,10 +8,10 @@ export type NewCar = Omit<Car, 'id'>
 
 export type CurrentCar = Car & {HTML: HTMLElement}
 
-export type WinnersTableRowCar = [
-  number: number,
-  carHtml: HTMLElement,
+export type WinnersTableRowCar = {
+  color: HTMLElement,
   name: string,
   wins: number,
-  bestTime: number
-];
+  time: number,
+  number?: number,
+};
