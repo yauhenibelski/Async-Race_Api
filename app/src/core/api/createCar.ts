@@ -1,7 +1,7 @@
 import { NewCar } from '../types/types';
 import { baseUrl } from '../constants/base_url';
 
-export async function createCar(newCar: NewCar[] | NewCar) {
+export function createCar(newCar: NewCar[] | NewCar) {
   const url = `${baseUrl}garage`;
   const cars = Array.isArray(newCar) ? newCar : [newCar];
 

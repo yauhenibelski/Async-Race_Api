@@ -15,26 +15,26 @@ class App {
     garagePage: new GaragePage(PageId.Garage).render(),
   };
 
-  static currentPageHtml: HTMLElement | undefined;
+  static currentPageHtml: Promise<HTMLElement> | undefined;
 
-  static renderPage(idPage: string) {
+  static async renderPage(idPage: string) {
     if (this.currentPageHtml) {
-      this.currentPageHtml.remove();
+      (await this.currentPageHtml).remove();
     }
-    if (idPage === PageId.Garage) {
+    if (idPage === PageId.Garage || idPage === '') {
       this.currentPageHtml = this.elements.garagePage;
-      this.container.append(this.elements.garagePage);
+      this.container.append(await this.elements.garagePage);
     }
     if (idPage === PageId.Winners) {
       this.currentPageHtml = this.elements.winnersPage;
-      this.container.append(this.elements.winnersPage);
+      this.container.append(await this.elements.winnersPage);
     }
   }
 
   run() {
     App.container.append(App.elements.navigation);
     App.container.append(App.elements.header);
-    App.renderPage(PageId.Garage);
+    App.renderPage(window.location.hash.slice(1));
     router();
   }
 }
