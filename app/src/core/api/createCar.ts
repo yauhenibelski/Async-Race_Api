@@ -12,7 +12,7 @@ export function createCar(newCar: NewCar[] | NewCar) {
     },
     body: JSON.stringify(car),
   }));
-  return Promise.all(cars)
+  Promise.all(cars)
     .then(() => fetch(url))
     .then((response) => response.body?.getReader())
     .then((reader) => {
