@@ -26,19 +26,11 @@ class WinnersPage extends Component {
   private static async createPage() {
     this.container.innerHTML = '';
     const buttons = [
-<<<<<<< HEAD
       new Button('Car name', () => WinnersPage.render()).render(),
       '',
       new Button('Wins', () => console.log('Wins')).render(),
       new Button('Best time', () => console.log('Best time')).render(),
       new Button('Number', () => console.log('num')).render(),
-=======
-      new Button('Car name', () => console.log('Car name')).render(),
-      '',
-      new Button('Best time', () => console.log('Best time')).render(),
-      new Button('Wins', () => console.log('Wins')).render(),
-      new Button('Position', () => console.log('num')).render(),
->>>>>>> 2df2554 (fix: Winner page)
     ];
 
     const tr = document.createElement('tr');

@@ -21,25 +21,18 @@ class CarFinishList extends Component {
     } else {
       listFinishCarId.forEach((finishCar, i) => {
         const [carId, time] = finishCar;
-        const div = document.createElement('div');
-        const num = document.createElement('h2');
-        const carNameText = document.createElement('h2');
-        const timeText = document.createElement('h2');
         const car = RaceBlock.getCar(carId);
-        const carHTML = createColorCar(car.color);
 
+        const div = document.createElement('div');
         div.className = 'car__finish-list';
-
-        num.innerHTML = `${i + 1}.`;
-        carNameText.innerHTML = `${car.name}`;
-        timeText.innerHTML = ` ${time} s`;
-
-        div.append(num);
-        div.append(carHTML);
-        div.append(carNameText);
-        div.append(timeText);
-
         this.container.append(div);
+
+        div.insertAdjacentHTML('beforeend', `
+          <h2>${i + 1}</h2>
+          <h2>${car.name}</h2>
+          <h2>${time} s</h2>
+        `);
+        div.firstElementChild?.after(createColorCar(car.color));
       });
     }
   }
