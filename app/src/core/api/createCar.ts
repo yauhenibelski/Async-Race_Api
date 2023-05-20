@@ -1,7 +1,7 @@
 import { NewCar } from '../types/types';
 import { baseUrl } from '../constants/base_url';
 
-export function createCar(newCar: NewCar[] | NewCar) {
+export async function createCar(newCar: NewCar[] | NewCar) {
   const url = `${baseUrl}garage`;
   const cars = Array.isArray(newCar) ? newCar : [newCar];
 
@@ -12,7 +12,7 @@ export function createCar(newCar: NewCar[] | NewCar) {
     },
     body: JSON.stringify(car),
   }));
-  Promise.all(cars)
+  await Promise.all(cars)
     .then(() => fetch(url))
     .then((response) => response.body?.getReader())
     .then((reader) => {
